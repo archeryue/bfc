@@ -1,12 +1,14 @@
 #include <iostream>
 #include <fstream>
-#include <deque>
 #include <string>
+#include <deque>
+#include <stack>
 
 using namespace std;
 
 void interpret(string src) {
     deque<int> tape(1, 0);
+    stack<char> bracket;
     int ptr = 0;   
     int isrc = 0;
     while (isrc < src.length()) {
@@ -32,10 +34,24 @@ void interpret(string src) {
                 cin >> tape[ptr];
                 break;
             case '[':
-                if (!tape[ptr]) while (src[++isrc] != ']');
+                if (!tape[ptr]) {
+                    bracket.push('[');
+                    while (!bracket.empty()) {
+                        isrc++;
+                        if (src[isrc] == ']') bracket.pop();
+                        if (src[isrc] == '[') bracket.push('[');
+                    }
+                }
                 break;
             case ']':
-                if(tape[ptr]) while (src[--isrc] != '[');
+                if(tape[ptr]) {
+                    bracket.push(']');
+                    while (!bracket.empty()) {
+                        isrc--;
+                        if (src[isrc] == '[') bracket.pop();
+                        if (src[isrc] == ']') bracket.push(']');
+                    }
+                }
                 break;
         }
         isrc++;

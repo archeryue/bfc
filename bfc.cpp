@@ -36,8 +36,7 @@ void interpret(string src) {
             case '[':
                 if (!tape[ptr]) {
                     bracket.push('[');
-                    while (!bracket.empty()) {
-                        isrc++;
+                    while (!bracket.empty() && ++isrc < src.length()) {
                         if (src[isrc] == ']') bracket.pop();
                         if (src[isrc] == '[') bracket.push('[');
                     }
@@ -46,8 +45,7 @@ void interpret(string src) {
             case ']':
                 if(tape[ptr]) {
                     bracket.push(']');
-                    while (!bracket.empty()) {
-                        isrc--;
+                    while (!bracket.empty() && --isrc >= 0) {
                         if (src[isrc] == '[') bracket.pop();
                         if (src[isrc] == ']') bracket.push(']');
                     }

@@ -1,14 +1,10 @@
-,>,
+,>,         //read a b
 
-[        Start your loops with your cell pointer on the loop counter (c1 in our case)
-< +      Add 1 to c0
-> -      Subtract 1 from c1
-]        End your loops with the cell pointer on the loop counter
-
-++++ ++++  c1 = 8 and this will be our loop counter again
 [
-< +++ +++  Add 6 to c0
-> -        Subtract 1 from c1
+< +         //inc a
+> -         //dec b
 ]
-< .        Print out c0 which has the value 55 which translates to "7"!
-> +++++ +++++ .
+
+++++ ++++ [< +++ +++ > -] < //add 48 to a
+. [-]                       //print a
++++++ +++++ . [-]           //print endl

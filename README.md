@@ -1,5 +1,5 @@
 # bfc
-Brain-Fuck Compiler
+Brain-Fuck [Compiler](https://github.com/archeryue/bfc/blob/master/bfc.cpp)
 
 ### Arithmetic
  - [Addition](https://github.com/archeryue/bfc/blob/master/add.bf)
